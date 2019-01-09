@@ -1,0 +1,38 @@
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <ul>
+            <li>
+                <h1>Productos</h1>
+            </li>
+            <li class="text-right">
+                <%= link_to "Nuevo Producto", new_product_path, class:"btn btn-primary" %>
+            </li>
+        </ul>
+        <table class="table">
+                <thead>
+                        <tr>
+                          <th>Nombre</th>
+                          <th>Precio</th>
+                          <th>Categorías</th>
+                          <th></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <% @products.each do |product| %>
+                          <tr>
+                                <td><%= product.name %></td>
+                                <td><%= product.price %></td>
+                                <td><% product.categories.each do |product|  %>
+                                        <%= product.name %>
+                                    <%end%>    
+                                </td>
+                                <td><%= link_to 'Editar', edit_product_path(product) %> -
+                                    <%= link_to 'Elminar', product, method: :delete, data: {confirm: 'Estas seguro de eliminar este producto?'} %>
+                                    </td>
+                          </tr>
+                        <% end %>
+                      </tbody>
+                    </table>
+        </table>
+    </div>
+</div>
